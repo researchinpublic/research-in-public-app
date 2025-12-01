@@ -1,0 +1,30 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_API_URL=${_NEXT_PUBLIC_API_URL}'
+      - '--build-arg'
+      - 'BACKEND_INTERNAL_URL=${_BACKEND_INTERNAL_URL}'
+      - '--build-arg'
+      - 'ENVIRONMENT=${_ENVIRONMENT}'
+      - '--tag'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/research-in-public/frontend:latest'
+      - '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/research-in-public/frontend:latest'
+
+substitutions:
+  # These are default/example values - will be overridden by deploy-gcp.sh
+  # Replace with your actual Cloud Run service URLs when deploying
+  _NEXT_PUBLIC_API_URL: 'https://YOUR-BACKEND-SERVICE-URL.a.run.app'
+  _BACKEND_INTERNAL_URL: 'https://YOUR-BACKEND-SERVICE-PROJECT-NUMBER-REGION.a.run.app'
+  _ENVIRONMENT: 'production'
+  _REGION: 'northamerica-northeast1'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+

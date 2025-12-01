@@ -1,0 +1,576 @@
+openapi: 3.0.3
+info:
+  title: Research In Public API
+  version: 1.0.0
+  description: |
+    Multi-agent AI system for PhD students and researchers.
+    Provides emotional support, peer matching, content drafting, and IP safety.
+  contact:
+    name: API Support
+    email: support@researchinpublic.ai
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.researchinpublic.ai/v1
+    description: Production server
+  - url: http://localhost:8000/v1
+    description: Local development server
+
+tags:
+  - name: sessions
+    description: Conversation session management
+  - name: messages
+    description: Message processing and agent interactions
+  - name: memory
+    description: Cross-session memory and graph management
+  - name: social
+    description: Social media content drafting
+  - name: content
+    description: Content safety and IP scanning
+
+paths:
+  /sessions:
+    post:
+      tags: [sessions]
+      summary: Create a new conversation session
+      operationId: createSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /sessions/{session_id}:
+    get:
+      tags: [sessions]
+      summary: Get session details
+      operationId: getSession
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /sessions/{session_id}/messages:
+    post:
+      tags: [messages]
+      summary: Process a user message through agents
+      operationId: processMessage
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+        - name: agent_mode
+          in: query
+          description: Agent mode (auto, vent, pi, scribe)
+          schema:
+            type: string
+            enum: [auto, vent, pi, scribe]
+            default: auto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+      responses:
+        '200':
+          description: Message processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '504':
+          $ref: '#/components/responses/AgentTimeout'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /sessions/{session_id}/draft-post:
+    post:
+      tags: [social]
+      summary: Draft a social media post from conversation
+      operationId: draftSocialPost
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DraftPostRequest'
+      responses:
+        '200':
+          description: Draft created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SocialDraftResponse'
+        '400':
+          $ref: '#/components/responses/NoShareableMoment'
+        '403':
+          $ref: '#/components/responses/GuardianBlocked'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /sessions/{session_id}/summary:
+    get:
+      tags: [sessions]
+      summary: Get session summary
+      operationId: getSessionSummary
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Session summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionSummaryResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{user_id}/memory/summary:
+    get:
+      tags: [memory]
+      summary: Get user memory summary
+      operationId: getMemorySummary
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: max_nodes
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+      responses:
+        '200':
+          description: Memory summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemorySummaryResponse'
+        '404':
+          $ref: '#/components/responses/MemoryNotFound'
+
+  /users/{user_id}/memory/timeline:
+    get:
+      tags: [memory]
+      summary: Get user memory timeline
+      operationId: getMemoryTimeline
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 200
+      responses:
+        '200':
+          description: Memory timeline
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryTimelineResponse'
+        '404':
+          $ref: '#/components/responses/MemoryNotFound'
+
+  /content/scan:
+    post:
+      tags: [content]
+      summary: Scan content for IP risks
+      operationId: scanContent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentScanRequest'
+      responses:
+        '200':
+          description: Scan completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuardianReportResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  parameters:
+    SessionId:
+      name: session_id
+      in: path
+      required: true
+      description: Session identifier
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    CreateSessionRequest:
+      type: object
+      required: [user_id]
+      properties:
+        user_id:
+          type: string
+          description: User identifier
+          example: "demo_user"
+
+    SessionResponse:
+      type: object
+      properties:
+        session_id:
+          type: string
+          format: uuid
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        user_id:
+          type: string
+          example: "demo_user"
+        created_at:
+          type: string
+          format: date-time
+        message_count:
+          type: integer
+          example: 5
+
+    MessageRequest:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+          description: User message content
+          example: "I'm frustrated with my research progress"
+        metadata:
+          type: object
+          additionalProperties: true
+
+    MessageResponse:
+      type: object
+      properties:
+        main_response:
+          type: string
+          description: Primary agent response
+        peer_matches:
+          type: string
+          description: Peer match suggestions (optional)
+        social_draft:
+          type: string
+          description: Social draft if shareable moment detected (optional)
+        guardian_report:
+          $ref: '#/components/schemas/GuardianReport'
+        agent_used:
+          type: string
+          enum: [Vent Validator, Semantic Matchmaker, The Scribe, The Guardian, PI Simulator]
+        trace_id:
+          type: string
+          description: Trace ID for observability
+
+    DraftPostRequest:
+      type: object
+      properties:
+        memory_context:
+          type: string
+          description: Optional memory context override
+
+    SocialDraftResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        draft:
+          type: string
+          description: Drafted post content
+        platform:
+          type: string
+          enum: [linkedin, twitter]
+        hashtags:
+          type: array
+          items:
+            type: string
+        guardian_report:
+          $ref: '#/components/schemas/GuardianReport'
+        message:
+          type: string
+          description: Status message
+
+    GuardianReport:
+      type: object
+      properties:
+        risk_level:
+          type: string
+          enum: [LOW, MEDIUM, HIGH]
+        concerns:
+          type: array
+          items:
+            type: string
+        blocked:
+          type: boolean
+        suggestions:
+          type: array
+          items:
+            type: string
+
+    GuardianReportResponse:
+      allOf:
+        - $ref: '#/components/schemas/GuardianReport'
+        - type: object
+          properties:
+            scan_id:
+              type: string
+              format: uuid
+
+    ContentScanRequest:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+          description: Content to scan
+        content_type:
+          type: string
+          enum: [message, draft, post]
+          default: message
+
+    MemorySummaryResponse:
+      type: object
+      properties:
+        user_id:
+          type: string
+        summary:
+          type: string
+          description: Human-readable memory summary
+        node_counts:
+          type: object
+          properties:
+            struggle:
+              type: integer
+            insight:
+              type: integer
+            breakthrough:
+              type: integer
+            topic:
+              type: integer
+            question:
+              type: integer
+        total_nodes:
+          type: integer
+        total_edges:
+          type: integer
+
+    MemoryTimelineResponse:
+      type: object
+      properties:
+        user_id:
+          type: string
+        timeline:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemoryNode'
+        total_count:
+          type: integer
+
+    MemoryNode:
+      type: object
+      properties:
+        node_id:
+          type: string
+        content:
+          type: string
+        node_type:
+          type: string
+          enum: [struggle, insight, breakthrough, topic, question]
+        timestamp:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+          additionalProperties: true
+
+    SessionSummaryResponse:
+      type: object
+      properties:
+        session_id:
+          type: string
+        user_id:
+          type: string
+        message_count:
+          type: integer
+        agent_usage:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Count of messages per agent
+        created_at:
+          type: string
+          format: date-time
+        last_message_at:
+          type: string
+          format: date-time
+
+    Error:
+      type: object
+      required: [type, title, status, detail]
+      properties:
+        type:
+          type: string
+          format: uri
+          description: Error type URI
+        title:
+          type: string
+          description: Error title
+        status:
+          type: integer
+          description: HTTP status code
+        detail:
+          type: string
+          description: Error detail message
+        instance:
+          type: string
+          format: uri
+          description: Request instance URI
+        trace_id:
+          type: string
+          description: Trace ID for debugging
+        code:
+          type: string
+          description: Machine-readable error code
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+
+  responses:
+    ValidationError:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: "https://api.researchinpublic.ai/errors/validation-error"
+            title: "Validation Error"
+            status: 400
+            detail: "Request validation failed"
+            code: "VALIDATION_ERROR"
+            errors:
+              - field: "content"
+                message: "Content is required"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: "https://api.researchinpublic.ai/errors/not-found"
+            title: "Not Found"
+            status: 404
+            detail: "Session not found"
+            code: "INVALID_SESSION"
+
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: "https://api.researchinpublic.ai/errors/server-error"
+            title: "Internal Server Error"
+            status: 500
+            detail: "An unexpected error occurred"
+            code: "SERVER_ERROR"
+            trace_id: "abc123"
+
+    AgentTimeout:
+      description: Agent timeout
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: "https://api.researchinpublic.ai/errors/agent-timeout"
+            title: "Agent Timeout"
+            status: 504
+            detail: "Agent response exceeded timeout"
+            code: "AGENT_TIMEOUT"
+
+    NoShareableMoment:
+      description: No shareable moment found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: "https://api.researchinpublic.ai/errors/no-shareable-moment"
+            title: "No Shareable Moment"
+            status: 400
+            detail: "No suitable content found for drafting"
+            code: "NO_SHAREABLE_MOMENT"
+
+    GuardianBlocked:
+      description: Content blocked by Guardian
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: "https://api.researchinpublic.ai/errors/guardian-blocked"
+            title: "Content Blocked"
+            status: 403
+            detail: "Content blocked due to HIGH IP risk"
+            code: "GUARDIAN_BLOCKED"
+
+    MemoryNotFound:
+      description: Memory not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            type: "https://api.researchinpublic.ai/errors/memory-not-found"
+            title: "Memory Not Found"
+            status: 404
+            detail: "No memories found for user"
+            code: "MEMORY_NOT_FOUND"
+

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SocialDraftResponse",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "draft": {
+      "type": "string",
+      "description": "Drafted post content"
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["linkedin", "twitter"]
+    },
+    "hashtags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "guardian_report": {
+      "$ref": "#/definitions/GuardianReport"
+    },
+    "message": {
+      "type": "string",
+      "description": "Status message"
+    }
+  },
+  "required": ["success"],
+  "definitions": {
+    "GuardianReport": {
+      "type": "object",
+      "properties": {
+        "risk_level": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH"]
+        },
+        "concerns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blocked": {
+          "type": "boolean"
+        },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["risk_level", "blocked"]
+    }
+  }
+}
+

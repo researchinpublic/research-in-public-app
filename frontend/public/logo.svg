@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Central Hub -->
+  <circle cx="50" cy="50" r="15" fill="#8B5CF6"/>
+  
+  <!-- Orbiting Nodes -->
+  <circle cx="50" cy="15" r="8" fill="#A78BFA"/>
+  <circle cx="85" cy="65" r="8" fill="#F472B6"/>
+  <circle cx="15" cy="65" r="8" fill="#34D399"/>
+  
+  <!-- Connections -->
+  <line x1="50" y1="23" x2="50" y2="35" stroke="#C4B5FD" stroke-width="4" stroke-linecap="round"/>
+  <line x1="77" y1="61" x2="62" y2="55" stroke="#FBCFE8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="23" y1="61" x2="38" y2="55" stroke="#A7F3D0" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Orbit Path -->
+  <circle cx="50" cy="50" r="38" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>

@@ -1,0 +1,17 @@
+# Kaggle-specific requirements
+# Note: Some packages may already be pre-installed in Kaggle notebooks
+
+google-generativeai>=0.3.0
+langchain>=0.1.0
+langchain-google-genai>=0.0.5
+
+# Vector Search (local - FAISS for Kaggle)
+faiss-cpu>=1.7.4
+
+# Data Handling
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Utilities
+requests>=2.31.0
+

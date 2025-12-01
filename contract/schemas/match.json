@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MatchResult",
+  "type": "object",
+  "properties": {
+    "profile_id": {
+      "type": "string"
+    },
+    "similarity_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "match_reason": {
+      "type": "string",
+      "description": "Reason for match"
+    },
+    "suggested_connection": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": ["profile_id", "similarity_score", "match_reason"]
+}
+

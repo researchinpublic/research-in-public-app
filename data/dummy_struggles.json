@@ -1,0 +1,108 @@
+[
+  {
+    "profile_id": "user_001",
+    "struggle_text": "My Western Blot keeps failing. I've tried everything - different antibodies, different blocking buffers, even different labs. Nothing works. I'm in my 3rd year and feel like I'm wasting time.",
+    "academic_stage": "3rd year PhD",
+    "research_area": "Biochemistry",
+    "emotional_tags": ["frustration", "technical_block", "time_pressure"]
+  },
+  {
+    "profile_id": "user_002",
+    "struggle_text": "My PI is constantly changing the project direction. Every week it's something new. I can't make progress because the goalposts keep moving. I don't know how to have this conversation.",
+    "academic_stage": "2nd year PhD",
+    "research_area": "Molecular Biology",
+    "emotional_tags": ["uncertainty", "interpersonal", "direction_lack"]
+  },
+  {
+    "profile_id": "user_003",
+    "struggle_text": "Everyone in my lab publishes faster than me. I see papers coming out left and right while I'm still troubleshooting basic methods. I feel like an imposter.",
+    "academic_stage": "4th year PhD",
+    "research_area": "Genetics",
+    "emotional_tags": ["imposter_syndrome", "comparison", "productivity_anxiety"]
+  },
+  {
+    "profile_id": "user_004",
+    "struggle_text": "My committee meeting is next week and I have nothing to show. My experiments keep failing and I'm terrified of disappointing my advisor. The pressure is overwhelming.",
+    "academic_stage": "2nd year PhD",
+    "research_area": "Neuroscience",
+    "emotional_tags": ["anxiety", "deadline_pressure", "fear_of_failure"]
+  },
+  {
+    "profile_id": "user_005",
+    "struggle_text": "I've been working on this project for 6 months and still don't have publishable results. My PI keeps asking when I'll have data, but every experiment reveals new problems. I'm questioning if I'm cut out for research.",
+    "academic_stage": "3rd year PhD",
+    "research_area": "Cell Biology",
+    "emotional_tags": ["self_doubt", "progress_frustration", "career_questioning"]
+  },
+  {
+    "profile_id": "user_006",
+    "struggle_text": "Lab culture is toxic. People compete instead of collaborate. I feel isolated and don't know who to trust. I want to switch labs but I'm already 2 years in.",
+    "academic_stage": "2nd year PhD",
+    "research_area": "Chemistry",
+    "emotional_tags": ["isolation", "toxic_environment", "interpersonal_conflict"]
+  },
+  {
+    "profile_id": "user_007",
+    "struggle_text": "My reagent order got delayed again. This is the third time this month. I can't make progress without it and my timeline is slipping. I feel helpless.",
+    "academic_stage": "1st year PhD",
+    "research_area": "Immunology",
+    "emotional_tags": ["frustration", "external_blockers", "timeline_anxiety"]
+  },
+  {
+    "profile_id": "user_008",
+    "struggle_text": "I spent 3 months optimizing a protocol only to find out someone else published it last year. I feel like I wasted all that time. Should I pivot or continue?",
+    "academic_stage": "3rd year PhD",
+    "research_area": "Biotechnology",
+    "emotional_tags": ["disappointment", "time_waste", "decision_paralysis"]
+  },
+  {
+    "profile_id": "user_009",
+    "struggle_text": "My postdoc application got rejected again. This is the 5th one. I'm starting to think I'm not good enough. Maybe I should leave academia.",
+    "academic_stage": "Final year PhD",
+    "research_area": "Bioinformatics",
+    "emotional_tags": ["rejection", "career_anxiety", "self_doubt"]
+  },
+  {
+    "profile_id": "user_010",
+    "struggle_text": "I'm the only person in my lab working on this technique. When things go wrong, I have no one to ask. I feel completely alone in troubleshooting.",
+    "academic_stage": "2nd year PhD",
+    "research_area": "Biophysics",
+    "emotional_tags": ["isolation", "technical_isolation", "lack_of_support"]
+  },
+  {
+    "profile_id": "user_011",
+    "struggle_text": "My PI never gives feedback. I send drafts and get no response for weeks. Then suddenly it's urgent. I don't know how to manage expectations.",
+    "academic_stage": "3rd year PhD",
+    "research_area": "Ecology",
+    "emotional_tags": ["communication_issues", "feedback_lack", "expectation_management"]
+  },
+  {
+    "profile_id": "user_012",
+    "struggle_text": "I'm balancing lab work, teaching, and my own research. There aren't enough hours in the day. I'm burning out but can't slow down.",
+    "academic_stage": "4th year PhD",
+    "research_area": "Physics",
+    "emotional_tags": ["burnout", "time_management", "overwhelm"]
+  },
+  {
+    "profile_id": "user_013",
+    "struggle_text": "My paper got rejected with harsh reviews. One reviewer was particularly mean. I'm questioning everything about my work now.",
+    "academic_stage": "4th year PhD",
+    "research_area": "Materials Science",
+    "emotional_tags": ["rejection", "criticism", "self_doubt"]
+  },
+  {
+    "profile_id": "user_014",
+    "struggle_text": "I can't get my code to work. I've been debugging for days. Stack Overflow doesn't help. I feel like I'm missing something fundamental.",
+    "academic_stage": "2nd year PhD",
+    "research_area": "Computational Biology",
+    "emotional_tags": ["technical_block", "debugging_frustration", "skill_gap"]
+  },
+  {
+    "profile_id": "user_015",
+    "struggle_text": "My experiment worked perfectly in pilot but fails every time I scale up. I don't understand why. My PI is losing patience.",
+    "academic_stage": "3rd year PhD",
+    "research_area": "Chemical Engineering",
+    "emotional_tags": ["reproducibility", "scaling_issues", "pressure"]
+  }
+]
+

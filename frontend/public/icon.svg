@@ -1,0 +1,51 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Speech bubble (left side) with rounded corners -->
+  <path d="M4 6C4 4.89543 4.89543 4 6 4H14C15.1046 4 16 4.89543 16 6V10C16 11.1046 15.1046 12 14 12H8L4 16V6Z" 
+        stroke="#9333EA" 
+        stroke-width="2" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Pointer from speech bubble to megaphone -->
+  <path d="M16 10L18 10" 
+        stroke="#9333EA" 
+        stroke-width="2" 
+        stroke-linecap="round"/>
+  
+  <!-- Megaphone cylindrical body (connected to speech bubble) -->
+  <rect x="18" y="8" width="3" height="6" 
+        stroke="#9333EA" 
+        stroke-width="2" 
+        fill="none" 
+        rx="0.5"/>
+  
+  <!-- Three horizontal sound wave lines inside megaphone body -->
+  <line x1="19" y1="9.5" x2="20" y2="9.5" 
+        stroke="#9333EA" 
+        stroke-width="1.5" 
+        stroke-linecap="round"/>
+  <line x1="19" y1="11" x2="20" y2="11" 
+        stroke="#9333EA" 
+        stroke-width="1.5" 
+        stroke-linecap="round"/>
+  <line x1="19" y1="12.5" x2="20" y2="12.5" 
+        stroke="#9333EA" 
+        stroke-width="1.5" 
+        stroke-linecap="round"/>
+  
+  <!-- Megaphone wide conical opening (right side) -->
+  <path d="M21 8L26 6L26 16L21 14V8Z" 
+        stroke="#9333EA" 
+        stroke-width="2" 
+        fill="none" 
+        stroke-linejoin="round"/>
+  
+  <!-- Megaphone handle (extending downward) -->
+  <path d="M23.5 16L23.5 20L22 20" 
+        stroke="#9333EA" 
+        stroke-width="2" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+</svg>
