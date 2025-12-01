@@ -1,7 +1,7 @@
 # Change Control
 
 **Version:** 1.0.0  
-**Last Updated:** 2024-11-19
+**Last Updated:** 2025-12-01
 
 This document defines the change control process for Research In Public contracts, including versioning, deprecation, and migration strategies.
 
@@ -184,7 +184,7 @@ This document defines the change control process for Research In Public contract
 **In OpenAPI:**
 ```yaml
 deprecated: true
-x-deprecation-date: "2024-11-19"
+x-deprecation-date: "2025-12-01"
 x-deprecation-replacement: "/v1/new-endpoint"
 x-deprecation-notice: "This endpoint will be removed in v2.0.0. Use /v1/new-endpoint instead."
 ```
@@ -192,7 +192,7 @@ x-deprecation-notice: "This endpoint will be removed in v2.0.0. Use /v1/new-endp
 **In Response Headers:**
 ```
 X-Deprecated: true
-X-Deprecation-Date: 2024-11-19
+X-Deprecation-Date: 2025-12-01
 X-Deprecation-Replacement: /v1/new-endpoint
 ```
 
@@ -284,7 +284,7 @@ A breaking change is any change that requires client code changes to maintain co
 ### Example
 
 ```markdown
-## [1.1.0] - 2024-11-19
+## [1.1.0] - 2025-12-01
 
 ### Added
 - New endpoint `/v1/users/{user_id}/memory/timeline`
@@ -296,7 +296,7 @@ A breaking change is any change that requires client code changes to maintain co
 ### Deprecated
 - Endpoint `/v1/sessions/{session_id}/old-endpoint` (use `/v1/sessions/{session_id}/new-endpoint`)
 
-## [1.0.1] - 2024-11-15
+## [1.0.1] - 2025-12-01
 
 ### Fixed
 - Fixed typo in error message

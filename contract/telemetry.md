@@ -1,7 +1,7 @@
 # Telemetry and Analytics
 
 **Version:** 1.0.0  
-**Last Updated:** 2024-11-19
+**Last Updated:** 2025-12-01
 
 This document defines the telemetry, logging, metrics, and tracing strategy for Research In Public.
 
@@ -26,7 +26,7 @@ This document defines the telemetry, logging, metrics, and tracing strategy for 
 **Example:**
 ```json
 {
-  "timestamp": "2024-11-19T10:00:00Z",
+  "timestamp": "2025-12-01T10:00:00Z",
   "level": "INFO",
   "service": "agent_orchestrator",
   "trace_id": "abc123def456",

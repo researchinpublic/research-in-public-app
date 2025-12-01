@@ -1,7 +1,7 @@
 # Pagination, Filtering, and Sorting
 
 **Version:** 1.0.0  
-**Last Updated:** 2024-11-19
+**Last Updated:** 2025-12-01
 
 This document defines the standard query parameters for pagination, filtering, and sorting across all API endpoints.
 
@@ -60,7 +60,7 @@ GET /v1/users/demo_user/memory/timeline?page=2&per_page=50
       "node_id": "node_1",
       "content": "...",
       "node_type": "struggle",
-      "timestamp": "2024-11-19T10:00:00Z"
+      "timestamp": "2025-12-01T10:00:00Z"
     },
     ...
   ],
@@ -98,24 +98,24 @@ Filters use the format: `filter[field][operator]=value`
 **Memory Nodes:**
 - `filter[node_type][eq]=struggle`
 - `filter[user_id][eq]=demo_user`
-- `filter[created_after][gte]=2024-11-01T00:00:00Z`
+- `filter[created_after][gte]=2025-12-01T00:00:00Z`
 
 **Sessions:**
 - `filter[user_id][eq]=demo_user`
-- `filter[created_after][gte]=2024-11-01T00:00:00Z`
+- `filter[created_after][gte]=2025-12-01T00:00:00Z`
 
 ### Multiple Filters
 
 Multiple filters are combined with AND logic:
 
 ```
-GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[created_after][gte]=2024-11-01T00:00:00Z
+GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[created_after][gte]=2025-12-01T00:00:00Z
 ```
 
 ### Example Request
 
 ```
-GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[created_after][gte]=2024-11-01T00:00:00Z&page=1&per_page=20
+GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[created_after][gte]=2025-12-01T00:00:00Z&page=1&per_page=20
 ```
 
 ### Example Response
@@ -127,7 +127,7 @@ GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[cr
       "node_id": "node_1",
       "content": "I'm struggling with...",
       "node_type": "struggle",
-      "timestamp": "2024-11-19T10:00:00Z"
+      "timestamp": "2025-12-01T10:00:00Z"
     }
   ],
   "pagination": {
@@ -176,7 +176,7 @@ GET /v1/users/demo_user/memory/timeline?sort=-timestamp&page=1&per_page=20
 
 **Request:**
 ```
-GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[created_after][gte]=2024-11-01T00:00:00Z&sort=-timestamp&page=1&per_page=20
+GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[created_after][gte]=2025-12-01T00:00:00Z&sort=-timestamp&page=1&per_page=20
 ```
 
 **Response:**
@@ -187,13 +187,13 @@ GET /v1/users/demo_user/memory/timeline?filter[node_type][eq]=struggle&filter[cr
       "node_id": "node_5",
       "content": "Latest struggle...",
       "node_type": "struggle",
-      "timestamp": "2024-11-19T15:00:00Z"
+      "timestamp": "2025-12-01T15:00:00Z"
     },
     {
       "node_id": "node_3",
       "content": "Earlier struggle...",
       "node_type": "struggle",
-      "timestamp": "2024-11-15T10:00:00Z"
+      "timestamp": "2025-12-01T10:00:00Z"
     }
   ],
   "pagination": {

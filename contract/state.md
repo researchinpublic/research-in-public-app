@@ -1,7 +1,7 @@
 # Front-End State Contracts
 
 **Version:** 1.0.0  
-**Last Updated:** 2024-11-19
+**Last Updated:** 2025-12-01
 
 This document defines the front-end state management contracts for Research In Public.
 

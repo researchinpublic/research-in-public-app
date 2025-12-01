@@ -5,7 +5,13 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![Gemini](https://img.shields.io/badge/Gemini-2.5-green.svg)](https://ai.google.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black.svg)](https://nextjs.org/)
-[![Status](https://img.shields.io/badge/Status-Production-success.svg)](https://github.com/yaodu/research-in-public)
+[![Status](https://img.shields.io/badge/Status-Production-success.svg)](https://github.com/researchinpublic/research-in-public-app)
+
+---
+
+<div align="center">
+  <img src="data/Image_60gash60gash60ga.jpg" alt="Research In Public - Turn rough vents into safe, public stories" width="800">
+</div>
 
 ---
 
@@ -166,8 +172,8 @@ Visual representation of peer struggles in high-dimensional vector space, showin
 
 ```bash
 # Clone the repository
-git clone https://github.com/yaodu/research-in-public.git
-cd research-in-public
+git clone https://github.com/researchinpublic/research-in-public-app.git
+cd research-in-public-app
 
 # Install Python dependencies
 pip install -r requirements.txt

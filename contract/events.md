@@ -1,7 +1,7 @@
 # Event/Async Contract
 
 **Version:** 1.0.0  
-**Last Updated:** 2024-11-19
+**Last Updated:** 2025-12-01
 
 This document defines the event/async contract for Research In Public (future enhancement).
 
@@ -28,7 +28,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_123",
   "event_type": "user.message.sent",
-  "timestamp": "2024-11-19T10:00:00Z",
+  "timestamp": "2025-12-01T10:00:00Z",
   "user_id": "demo_user",
   "session_id": "session_123",
   "data": {
@@ -46,7 +46,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_124",
   "event_type": "user.session.created",
-  "timestamp": "2024-11-19T10:00:00Z",
+  "timestamp": "2025-12-01T10:00:00Z",
   "user_id": "demo_user",
   "data": {
     "session_id": "session_123"
@@ -63,7 +63,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_125",
   "event_type": "agent.response.generated",
-  "timestamp": "2024-11-19T10:00:05Z",
+  "timestamp": "2025-12-01T10:00:05Z",
   "user_id": "demo_user",
   "session_id": "session_123",
   "data": {
@@ -82,7 +82,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_126",
   "event_type": "agent.match.suggested",
-  "timestamp": "2024-11-19T10:00:06Z",
+  "timestamp": "2025-12-01T10:00:06Z",
   "user_id": "demo_user",
   "session_id": "session_123",
   "data": {
@@ -101,7 +101,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_127",
   "event_type": "memory.node.created",
-  "timestamp": "2024-11-19T10:00:07Z",
+  "timestamp": "2025-12-01T10:00:07Z",
   "user_id": "demo_user",
   "data": {
     "node_id": "node_789",
@@ -118,7 +118,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_128",
   "event_type": "memory.edge.created",
-  "timestamp": "2024-11-19T10:00:08Z",
+  "timestamp": "2025-12-01T10:00:08Z",
   "user_id": "demo_user",
   "data": {
     "edge_id": "edge_456",
@@ -139,7 +139,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_129",
   "event_type": "draft.created",
-  "timestamp": "2024-11-19T10:05:00Z",
+  "timestamp": "2025-12-01T10:05:00Z",
   "user_id": "demo_user",
   "session_id": "session_123",
   "data": {
@@ -158,7 +158,7 @@ All operations are synchronous HTTP requests/responses. No event-driven architec
 {
   "event_id": "evt_130",
   "event_type": "guardian.scan.completed",
-  "timestamp": "2024-11-19T10:05:01Z",
+  "timestamp": "2025-12-01T10:05:01Z",
   "user_id": "demo_user",
   "data": {
     "scan_id": "scan_456",

@@ -1,7 +1,7 @@
 # Design System Components
 
 **Version:** 1.0.0  
-**Last Updated:** 2024-11-19
+**Last Updated:** 2025-12-01
 
 This document defines the base component library for Research In Public. All components must follow these specifications for consistency and accessibility.
 
